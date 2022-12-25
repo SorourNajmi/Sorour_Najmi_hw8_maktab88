@@ -1,0 +1,17 @@
+p {
+    color: red;
+    height: 30px;
+}
+input {
+    width: 370px;
+    height: 25px;
+    border: 1px solid black;
+    margin-left: 20px;
+}
+#submit {
+    width: 70px;
+}
+td {
+    text-align: center;
+    height: 40px;
+}
