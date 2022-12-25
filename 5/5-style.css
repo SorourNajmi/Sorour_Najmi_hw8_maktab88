@@ -1,11 +1,21 @@
+form {
+    margin-top: 40px;
+}
+table {
+    margin: auto;
+    border: 3px solid black;
+    padding: 50px 40px 30px 30px;
+}
 p {
     color: red;
     height: 30px;
 }
 input {
+    padding: 5px;
     width: 370px;
-    height: 25px;
+    height: 35px;
     border: 1px solid black;
+    border-radius: 6px;
     margin-left: 20px;
 }
 #submit {
