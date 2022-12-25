@@ -127,7 +127,11 @@ saveUp.onclick = function() {
     });
     let i = 0;
     for (const key of Object.keys(userData[0])) {
-        updatingItem[key] = upInputs[i].value;
+        if (typeof(userData[0][key]) === 'string') {
+            updatingItem[key] = upInputs[i].value;
+        } else if (typeof(userData[0][key]) === 'number') {
+            updatingItem[key] = +upInputs[i].value;
+        }       
         i++;
     }
     makeUserDataTable(userData);
@@ -191,7 +195,11 @@ saveCreate.onclick = function() {
     const newPerson = {};
     let j = 0;
     for (const key of Object.keys(userData[0])) {
-        newPerson[key] = createInputs[j].value;
+        if (typeof(userData[0][key]) === 'string') {
+            newPerson[key] = createInputs[j].value;
+        } else if (typeof(userData[0][key]) === 'number') {
+            newPerson[key] = +createInputs[j].value;
+        }       
         j++;
     }
     userData.push(newPerson);

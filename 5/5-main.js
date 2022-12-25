@@ -14,6 +14,7 @@ submitBtn.onclick = function() {
         userPara.textContent = "";
         userInput.style.border = "1px solid black";
     }
+    const passWordTrimmed = passInput.value.trim();
     const passWord = passInput.value;
     const passLenValid = passWord.length >= 8;
     const hasLetter = passWord.split('').some(function(char) {
@@ -24,15 +25,22 @@ submitBtn.onclick = function() {
         const ascii = char.charCodeAt(0);
         return ascii >= 48 && ascii <= 57;
     });
-    if (!passLenValid || !hasLetter || !hasNum ) {
+    if (passWordTrimmed === "") {
+        passPara.textContent = "الزامی";
+        passInput.style.border = "2px solid red";
+    } else if (!passLenValid || !hasLetter || !hasNum) {
         passPara.textContent = "رمز عبور باید شامل حداقل ۸ کاراکتر و حداقل یک عدد و یک حرف باشد";
         passInput.style.border = "2px solid red";
     } else {
         passPara.textContent = "";
         passInput.style.border = "1px solid black";
     }
+    const repassWordTrimmed = repassInput.value.trim();
     const repassWord = repassInput.value;
-    if (passWord !== repassWord) {
+    if (repassWordTrimmed === "") {
+        repassPara.textContent = "الزامی";
+        repassInput.style.border = "2px solid red";
+    } else if (passWord !== repassWord) {
         repassPara.textContent = " رمزهای وارد شده یکسان نیستند ";
         repassInput.style.border = "2px solid red";
     } else {

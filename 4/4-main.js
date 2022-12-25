@@ -1,14 +1,19 @@
 const myBody = document.body;
 const myDiv = document.createElement("div");
 myBody.appendChild(myDiv);
-myDiv.style.width = "340px";
-myDiv.style.height = "300px";
+myDiv.style.width = "320px";
+myDiv.style.height = "280px";
 myDiv.style.border = "2px solid black";
-myDiv.style.padding = "10px"
+myDiv.style.paddingTop = "15px";
+myDiv.style.paddingBottom= "2px";
+myDiv.style.paddingLeft= "25px";
+myDiv.style.paddingRight= "15px";
+myDiv.style.margin= "auto";
 const myHeader = document.createElement("h1");
 const headerText = document.createTextNode("My Tasks");
 myHeader.appendChild(headerText);
 myHeader.style.color = "red";
+myHeader.style.marginTop = "10px";
 myDiv.appendChild(myHeader);
 const myOrderedL = document.createElement("ol");
 myOrderedL.style.listStyleType = "upper-roman";
@@ -51,7 +56,7 @@ li5.appendChild(li5Text);
 li5.style.textDecoration = "line-through";
 myOrderedL.appendChild(li5);
 const myInput = document.createElement("input");
-myInput.style.marginRight = "6px"
+myInput.style.marginRight = "7px"
 myDiv.appendChild(myInput);
 const myBtn = document.createElement("button");
 const myTask = document.createTextNode("add task");

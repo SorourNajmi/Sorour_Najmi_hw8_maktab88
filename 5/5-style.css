@@ -9,10 +9,11 @@ table {
 p {
     color: red;
     height: 30px;
+    font-size: small;
 }
 input {
     padding: 5px;
-    width: 370px;
+    width: 310px;
     height: 35px;
     border: 1px solid black;
     border-radius: 6px;
