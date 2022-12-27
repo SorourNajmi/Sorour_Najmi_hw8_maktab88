@@ -128,8 +128,16 @@ saveUp.onclick = function() {
     let i = 0;
     for (const key of Object.keys(userData[0])) {
         if (typeof(userData[0][key]) === 'string') {
+            if (!isNaN(upInputs[i].value)) {
+                alert(`Invalid input type! (${key}) must be string!`);
+                return;
+            }
             updatingItem[key] = upInputs[i].value;
         } else if (typeof(userData[0][key]) === 'number') {
+            if (isNaN(upInputs[i].value)) {
+                alert(`Invalid input type! (${key}) must be number!`);
+                return;
+            }
             updatingItem[key] = +upInputs[i].value;
         }       
         i++;
@@ -196,8 +204,16 @@ saveCreate.onclick = function() {
     let j = 0;
     for (const key of Object.keys(userData[0])) {
         if (typeof(userData[0][key]) === 'string') {
+            if (!isNaN(createInputs[j].value)) {
+                alert(`Invalid input type! (${key}) must be string!`);
+                return;
+            }
             newPerson[key] = createInputs[j].value;
         } else if (typeof(userData[0][key]) === 'number') {
+            if (isNaN(createInputs[j].value)) {
+                alert(`Invalid input type! (${key}) must be number!`);
+                return;
+            }
             newPerson[key] = +createInputs[j].value;
         }       
         j++;
