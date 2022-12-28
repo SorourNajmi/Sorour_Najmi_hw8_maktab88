@@ -1,17 +1,22 @@
 function makeUserDataTable(personData) {
+    if (!Array.isArray(personData)) {
+        console.error("Not an array!");
+        return;
+    }
     const tableElem = document.querySelector("table");
     const rows = document.getElementsByTagName("tr");
     const len = rows.length;
     for(let i = 1; i < len ; i++) {
         rows[1].remove();
     }
+    const pattern = ['uid', 'firstname', 'lastname', 'city', 'postalCode', 'phoneNumber', 'position'];
     personData.forEach(function(person, index) {
         const row = document.createElement("tr");
         const rowCell = document.createElement("td");
         const rowCellText = document.createTextNode(`${index + 1}`);
         rowCell.appendChild(rowCellText);
         row.appendChild(rowCell);
-        for (const prop in person) {
+        for (const prop of pattern) {
             const newCell = document.createElement("td");
             const cellText = document.createTextNode(`${person[prop]}`);
             newCell.appendChild(cellText);
@@ -127,15 +132,19 @@ saveUp.onclick = function() {
     });
     let i = 0;
     for (const key of Object.keys(userData[0])) {
-        if (typeof(userData[0][key]) === 'string') {
+        if (isNaN(userData[0][key])) {
             if (!isNaN(upInputs[i].value)) {
                 alert(`Invalid input type! (${key}) must be string!`);
                 return;
             }
             updatingItem[key] = upInputs[i].value;
-        } else if (typeof(userData[0][key]) === 'number') {
+        } else if (!isNaN(userData[0][key])) {
             if (isNaN(upInputs[i].value)) {
                 alert(`Invalid input type! (${key}) must be number!`);
+                return;
+            }
+            if (!Number.isInteger(+upInputs[i].value) || +upInputs[i].value < 0) {
+                alert(`Invalid number!`);
                 return;
             }
             updatingItem[key] = +upInputs[i].value;
@@ -185,7 +194,6 @@ cancelCreate.onclick = function() {
     cancelCreate.style.display = "none";
     createPanel.style.display = "none";
 }
-console.log(saveCreate);
 saveCreate.onclick = function() {
     for (let i = 0; i < createInputs.length; i++) {
         if (createInputs[i].value.trim() === "") {
@@ -203,15 +211,19 @@ saveCreate.onclick = function() {
     const newPerson = {};
     let j = 0;
     for (const key of Object.keys(userData[0])) {
-        if (typeof(userData[0][key]) === 'string') {
+        if (isNaN(userData[0][key])) {
             if (!isNaN(createInputs[j].value)) {
                 alert(`Invalid input type! (${key}) must be string!`);
                 return;
             }
             newPerson[key] = createInputs[j].value;
-        } else if (typeof(userData[0][key]) === 'number') {
+        } else if (!isNaN(userData[0][key])) {
             if (isNaN(createInputs[j].value)) {
                 alert(`Invalid input type! (${key}) must be number!`);
+                return;
+            }
+            if (!Number.isInteger(+createInputs[j].value) || +createInputs[j].value < 0) {
+                alert(`Invalid number!`);
                 return;
             }
             newPerson[key] = +createInputs[j].value;
