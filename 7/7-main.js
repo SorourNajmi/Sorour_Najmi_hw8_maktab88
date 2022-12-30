@@ -58,6 +58,18 @@ function setRead() {
     const len = rows.length;
     for (let i = 1; i < len; i++) {
         rows[i].onclick = read;
+        rows[i].onmouseover = function() {
+            rows[i].style.backgroundColor = "black";
+            rows[i].style.color = "white";
+        };
+        rows[i].onmouseout = function() {
+            if (i % 2 === 1) {
+                rows[i].style.backgroundColor = "#c0c0c0";
+            } else {
+                rows[i].style.backgroundColor = "white";
+            }
+            rows[i].style.color = "black";
+        }
     }
 }
 const read = function() {
@@ -65,7 +77,7 @@ const read = function() {
     const uid = +cell.innerHTML;
     const person = userData.find(function(person) {
         return person.uid === uid;
-    })
+    });
     let j = 0;
     for (const value of Object.values(person)) {
         readParas[j].innerHTML = value;
@@ -119,7 +131,7 @@ updateBtn.onclick = function() {
     cancelUp.style.display = "";
     upPanel.style.display = "";
     updateBtn.setAttribute("disabled", '');
-}
+};
 saveUp.onclick = function() {
     for (let i = 0; i < upInputs.length; i++) {
         if (upInputs[i].value.trim() === "") {
@@ -159,7 +171,7 @@ saveUp.onclick = function() {
     upPanel.style.display = "none";
     updateBtn.disabled = false;
     alert("Successfully updated!");
-}
+};
 cancelUp.onclick = function() {
     saveUp.style.display = "none";
     cancelUp.style.display = "none";
@@ -168,7 +180,7 @@ cancelUp.onclick = function() {
     readPanel.style.display = "";
     closeBtn.style.display = "";
     updateBtn.disabled = false;
-}
+};
 deleteBtn.onclick = function() {
     const index = userData.findIndex(function(person) {
         return person.uid === +readParas[0].innerHTML;
@@ -181,19 +193,19 @@ deleteBtn.onclick = function() {
     makeUserDataTable(userData);
     setRead();
     alert("Successfully removed!");
-}
+};
 createBtn.onclick = function() {
     createBtn.disabled = true;
     saveCreate.style.display = "";
     cancelCreate.style.display = "";
     createPanel.style.display = "";
-}
+};
 cancelCreate.onclick = function() {
     createBtn.disabled = false;
     saveCreate.style.display = "none";
     cancelCreate.style.display = "none";
     createPanel.style.display = "none";
-}
+};
 saveCreate.onclick = function() {
     for (let i = 0; i < createInputs.length; i++) {
         if (createInputs[i].value.trim() === "") {
@@ -238,4 +250,4 @@ saveCreate.onclick = function() {
     cancelCreate.style.display = "none";
     createPanel.style.display = "none";
     alert("Successfully created!");
-}
+};

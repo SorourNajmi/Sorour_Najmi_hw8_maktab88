@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#main {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+#paragraph {
+    position: absolute;
+    top: 10px;
+    left: 8px;
+}
+#dot {
+    background-color: blue;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+#red {
+    position: absolute;
+    top: 220px;
+    left: 300px;
+    width: 260px;
+    height: 200px;
+    background-color: red;
+}
+#black {
+    position: absolute;
+    top: 220px;
+    left: 700px;
+    width: 260px;
+    height: 200px;
+    background-color: black;
+}
